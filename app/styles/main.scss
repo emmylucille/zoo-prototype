@@ -22,7 +22,48 @@ $bodyFont: "Source Sans Pro", helvetica;
   line-height: 30px;
   background-color: $orange;
   padding: 60px;
-  height: 300px;
+  height: 250px;
+}
+
+.search-bar {
+  $search-bar-border-color: $base-border-color;
+  $search-bar-border: 1px solid $search-bar-border-color;
+  $search-bar-background: lighten($search-bar-border-color, 10);
+
+  position: relative;
+  float: right;
+  display: inline-block;
+
+  input {
+    @include box-sizing(border-box);
+    display: block;
+  }
+
+  div.search-and-submit {
+    position: relative;
+
+    input[type=search] {
+      @include appearance(none);
+      width: 100%;
+      padding: .5em .8em;
+      font-size: .9em;
+      font-style: italic;
+      border-radius: $base-border-radius * 2;
+      margin: 0;
+    }
+
+    button[type=submit] {
+      @include button(simple, lighten($base-border-color, 10));
+      @include position(absolute, 0.3em 0.3em 0.3em 0);
+      outline: none;
+      padding: 5px 10px;
+
+      img {
+        height: 12px;
+        opacity: .7;
+      }
+    }
+  }
 }
 
 // #search {
@@ -32,7 +73,8 @@ $bodyFont: "Source Sans Pro", helvetica;
 
 .logo{
   margin: auto;
-  text-align: center;
+  // text-align: center;
+  margin: 0px 35px;
   h1 {
     font-size: 60px;
     font-family: $mainFont;
@@ -40,18 +82,28 @@ $bodyFont: "Source Sans Pro", helvetica;
   }
 }
 
-.buttons {
-  float: left;
-  display: inline;
-}
 
 .container {
   @include outer-container;
   max-width: 1000px;
   margin: auto;
   // background-color: #eee;
-  margin-top: 20px;
-  padding: 20px;
+  // margin-top: 20px;
+  padding: 0px 20px 20px 20px;
+
+  .buttons li{
+    display: inline;
+    background-color: $yellow;
+    padding: 10px 30px;
+    font-family: $mainFont;
+    font-size: 16px;
+    color: white;
+    margin: -20px 30px 0px 0px;
+    border-radius: 5px;
+  }
+  .buttons li:hover {
+    background-color: $lightBrown;
+  }
 
   .new-events{
     @include span-columns(12);
@@ -60,6 +112,7 @@ $bodyFont: "Source Sans Pro", helvetica;
       font-family: $mainFont;
       font-size: 35px;
       color: $brown;
+      margin: 30px 0px 5px 0px;
     }
     h3{
       font-family: $mainFont;
@@ -70,21 +123,208 @@ $bodyFont: "Source Sans Pro", helvetica;
       font: $bodyFont;
       font-size: 14px;
       color: $lightBrown;
+      margin: 20px 0px;
     }
   }
 
-  .images {
-    img {
-    @include span-columns(4);
-    @include omega(3n);
+  // .images {
+  //   img {
+  //   @include span-columns(4);
+  //   @include omega(3n);
+  //   height: 200px;
+  //   }
+  // }
+}
+
+.hover-tile-outer {
+  @include span-columns(4);
+  $hover-tile-height: 10em;
+
+  background-position: bottom;
+  background-size: cover;
+  background: url("http://cdn.theanimals.pics/pictures/www.budgettemplates.co.uk/images/Zoo%20Animal%20115.jpg");
+  background-size: cover;
+  background-color: $green;
+  border: 1px solid $base-border-color;
+  height: 200px;
+  margin-bottom: $base-line-height;
+  cursor: pointer;
+
+  // @include media($medium-screen) {
+  //   width: 33.33%;
+  // }
+
+  .hover-tile-container {
     height: 200px;
+    overflow: hidden;
+  }
+
+  .hover-tile-container:hover > .hover-tile {
+    @include transform(translate(0, -100%));
+  }
+
+  .hover-tile {
+    @include transition(all, .2s ease-in-out);
+    background: inherit;
+    color: white;
+    height: inherit;
+    padding: 1em 1.5em;
+  }
+
+  .hover-tile-visible {
+    p {
+      // background: $green;
+      font-family: $mainFont;
+      font-size: 30px;
+      font-weight: 200;
+      margin: 150px 0px 0px 80px;
+    }
+  }
+
+  .hover-tile-hidden {
+    background: transparentize($yellow, .1);
+    h4 {
+      font-family: $mainFont;
+      color: $brown;
+      margin-bottom: .5em;
+    }
+    p {
+      color: $brown;
+      font-family: $bodyFont;
+      font-size: 14px;
+    }
+  }
+}
+
+.hover-tile-outer-2 {
+  @include span-columns(4);
+  $hover-tile-height: 10em;
+
+  background-position: bottom;
+  background-size: cover;
+  background: url("http://www.cntraveler.com/daily-traveler/2011/12/Famous-Zoo-Animals/_jcr_content/par/cn_contentwell/par-main/cn_colctrl/par-col2/cn_blogpost/cn_image.size.mei-xiang-giant-panda.jpg");
+  background-size: cover;
+  background-color: $green;
+  border: 1px solid $base-border-color;
+  height: 200px;
+  margin-bottom: $base-line-height;
+  cursor: pointer;
+
+  // @include media($medium-screen) {
+  //   width: 33.33%;
+  // }
+
+  .hover-tile-container-2 {
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .hover-tile-container-2:hover > .hover-tile {
+    @include transform(translate(0, -100%));
+  }
+
+  .hover-tile {
+    @include transition(all, .2s ease-in-out);
+    background: inherit;
+    color: white;
+    height: inherit;
+    padding: 1em 1.5em;
+  }
+
+  .hover-tile-visible-2 {
+    p {
+      // background: $green;
+      font-family: $mainFont;
+      font-size: 30px;
+      font-weight: 200;
+      margin: 150px 0px 0px 80px;
+    }
+  }
+
+  .hover-tile-hidden-2 {
+    background: transparentize($green, .1);
+    h4 {
+      font-family: $mainFont;
+      color: $brown;
+      margin-bottom: .5em;
+    }
+    p {
+      color: $brown;
+      font-family: $bodyFont;
+      font-size: 14px;
+    }
+  }
+}
+
+.hover-tile-outer-3 {
+  @include span-columns(4);
+  $hover-tile-height: 10em;
+
+  background-position: bottom;
+  background-size: cover;
+  background: url("http://www.zoo.org/view.image?Id=4847");
+  background-size: cover;
+  background-color: $green;
+  border: 1px solid $base-border-color;
+  height: 200px;
+  margin-bottom: $base-line-height;
+  cursor: pointer;
+
+  // @include media($medium-screen) {
+  //   width: 33.33%;
+  // }
+
+  .hover-tile-container-3 {
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .hover-tile-container-3:hover > .hover-tile {
+    @include transform(translate(0, -100%));
+  }
+
+  .hover-tile {
+    @include transition(all, .2s ease-in-out);
+    background: inherit;
+    color: white;
+    height: inherit;
+    padding: 1em 1.5em;
+  }
+
+  .hover-tile-visible-3 {
+    p {
+      // background: $green;
+      font-family: $mainFont;
+      font-size: 30px;
+      font-weight: 200;
+      margin: 150px 0px 0px 80px;
+    }
+  }
+
+  .hover-tile-hidden-3 {
+    background: transparentize($orange, .1);
+    h4 {
+      font-family: $mainFont;
+      color: $brown;
+      margin-bottom: .5em;
+    }
+    p {
+      color: $brown;
+      font-family: $bodyFont;
+      font-size: 14px;
     }
   }
 }
 
 
+
+
+
 .footer {
-  height: 150px;
+  height: 120px;
   background-color: $lightBrown;
-  text-align: center;
+  p {
+    font-family: $bodyFont;
+    font-size: 18px;
+  }
 }
